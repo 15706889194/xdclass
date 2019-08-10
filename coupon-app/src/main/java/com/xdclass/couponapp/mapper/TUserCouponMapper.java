@@ -19,7 +19,7 @@ import org.apache.ibatis.type.JdbcType;
 
 public interface TUserCouponMapper {
     @SelectProvider(type=TUserCouponSqlProvider.class, method="countByExample")
-    long countByExample(TUserCouponExample example);
+    int countByExample(TUserCouponExample example);
 
     @DeleteProvider(type=TUserCouponSqlProvider.class, method="deleteByExample")
     int deleteByExample(TUserCouponExample example);
@@ -32,13 +32,13 @@ public interface TUserCouponMapper {
 
     @Insert({
         "insert into t_user_coupon (user_coupon_code, pic_url, ",
-        "coupon_id, user_id, ",
-        "status, order_id, ",
-        "create_time)",
+        "createTime, coupon_id, ",
+        "user_id, status, ",
+        "order_id, create_time)",
         "values (#{userCouponCode,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, ",
-        "#{couponId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, ",
-        "#{status,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, ",
-        "#{createTime,jdbcType=TIMESTAMP})"
+        "#{createtime,jdbcType=TIMESTAMP}, #{couponId,jdbcType=INTEGER}, ",
+        "#{userId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, ",
+        "#{orderId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})"
     })
     @Options(useGeneratedKeys=true,keyProperty="id")
     int insert(TUserCoupon record);
@@ -52,6 +52,7 @@ public interface TUserCouponMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="user_coupon_code", property="userCouponCode", jdbcType=JdbcType.VARCHAR),
         @Result(column="pic_url", property="picUrl", jdbcType=JdbcType.VARCHAR),
+        @Result(column="createTime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="coupon_id", property="couponId", jdbcType=JdbcType.INTEGER),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER),
         @Result(column="status", property="status", jdbcType=JdbcType.INTEGER),
@@ -62,7 +63,8 @@ public interface TUserCouponMapper {
 
     @Select({
         "select",
-        "id, user_coupon_code, pic_url, coupon_id, user_id, status, order_id, create_time",
+        "id, user_coupon_code, pic_url, createTime, coupon_id, user_id, status, order_id, ",
+        "create_time",
         "from t_user_coupon",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -70,6 +72,7 @@ public interface TUserCouponMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="user_coupon_code", property="userCouponCode", jdbcType=JdbcType.VARCHAR),
         @Result(column="pic_url", property="picUrl", jdbcType=JdbcType.VARCHAR),
+        @Result(column="createTime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="coupon_id", property="couponId", jdbcType=JdbcType.INTEGER),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER),
         @Result(column="status", property="status", jdbcType=JdbcType.INTEGER),
@@ -91,6 +94,7 @@ public interface TUserCouponMapper {
         "update t_user_coupon",
         "set user_coupon_code = #{userCouponCode,jdbcType=VARCHAR},",
           "pic_url = #{picUrl,jdbcType=VARCHAR},",
+          "createTime = #{createtime,jdbcType=TIMESTAMP},",
           "coupon_id = #{couponId,jdbcType=INTEGER},",
           "user_id = #{userId,jdbcType=INTEGER},",
           "status = #{status,jdbcType=INTEGER},",

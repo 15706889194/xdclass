@@ -9,6 +9,8 @@ public class TUserCoupon {
 
     private String picUrl;
 
+    private Date createtime;
+
     private Integer couponId;
 
     private Integer userId;
@@ -41,6 +43,14 @@ public class TUserCoupon {
 
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
     public Integer getCouponId() {
@@ -92,6 +102,7 @@ public class TUserCoupon {
         sb.append(", id=").append(id);
         sb.append(", userCouponCode=").append(userCouponCode);
         sb.append(", picUrl=").append(picUrl);
+        sb.append(", createtime=").append(createtime);
         sb.append(", couponId=").append(couponId);
         sb.append(", userId=").append(userId);
         sb.append(", status=").append(status);
