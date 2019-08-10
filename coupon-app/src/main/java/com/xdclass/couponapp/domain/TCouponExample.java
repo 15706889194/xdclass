@@ -327,66 +327,6 @@ public class TCouponExample {
             return (Criteria) this;
         }
 
-        public Criteria andAchieveAmountIsNull() {
-            addCriterion("achieve_amount is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountIsNotNull() {
-            addCriterion("achieve_amount is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountEqualTo(Integer value) {
-            addCriterion("achieve_amount =", value, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountNotEqualTo(Integer value) {
-            addCriterion("achieve_amount <>", value, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountGreaterThan(Integer value) {
-            addCriterion("achieve_amount >", value, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("achieve_amount >=", value, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountLessThan(Integer value) {
-            addCriterion("achieve_amount <", value, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountLessThanOrEqualTo(Integer value) {
-            addCriterion("achieve_amount <=", value, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountIn(List<Integer> values) {
-            addCriterion("achieve_amount in", values, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountNotIn(List<Integer> values) {
-            addCriterion("achieve_amount not in", values, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountBetween(Integer value1, Integer value2) {
-            addCriterion("achieve_amount between", value1, value2, "achieveAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAchieveAmountNotBetween(Integer value1, Integer value2) {
-            addCriterion("achieve_amount not between", value1, value2, "achieveAmount");
-            return (Criteria) this;
-        }
-
         public Criteria andReduceAmountIsNull() {
             addCriterion("reduce_amount is null");
             return (Criteria) this;
@@ -447,6 +387,66 @@ public class TCouponExample {
             return (Criteria) this;
         }
 
+        public Criteria andAchieveAmountIsNull() {
+            addCriterion("achieve_amount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountIsNotNull() {
+            addCriterion("achieve_amount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountEqualTo(Integer value) {
+            addCriterion("achieve_amount =", value, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountNotEqualTo(Integer value) {
+            addCriterion("achieve_amount <>", value, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountGreaterThan(Integer value) {
+            addCriterion("achieve_amount >", value, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("achieve_amount >=", value, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountLessThan(Integer value) {
+            addCriterion("achieve_amount <", value, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountLessThanOrEqualTo(Integer value) {
+            addCriterion("achieve_amount <=", value, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountIn(List<Integer> values) {
+            addCriterion("achieve_amount in", values, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountNotIn(List<Integer> values) {
+            addCriterion("achieve_amount not in", values, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountBetween(Integer value1, Integer value2) {
+            addCriterion("achieve_amount between", value1, value2, "achieveAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAchieveAmountNotBetween(Integer value1, Integer value2) {
+            addCriterion("achieve_amount not between", value1, value2, "achieveAmount");
+            return (Criteria) this;
+        }
+
         public Criteria andStockIsNull() {
             addCriterion("stock is null");
             return (Criteria) this;
@@ -457,52 +457,52 @@ public class TCouponExample {
             return (Criteria) this;
         }
 
-        public Criteria andStockEqualTo(Integer value) {
+        public Criteria andStockEqualTo(Long value) {
             addCriterion("stock =", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockNotEqualTo(Integer value) {
+        public Criteria andStockNotEqualTo(Long value) {
             addCriterion("stock <>", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockGreaterThan(Integer value) {
+        public Criteria andStockGreaterThan(Long value) {
             addCriterion("stock >", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockGreaterThanOrEqualTo(Integer value) {
+        public Criteria andStockGreaterThanOrEqualTo(Long value) {
             addCriterion("stock >=", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockLessThan(Integer value) {
+        public Criteria andStockLessThan(Long value) {
             addCriterion("stock <", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockLessThanOrEqualTo(Integer value) {
+        public Criteria andStockLessThanOrEqualTo(Long value) {
             addCriterion("stock <=", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockIn(List<Integer> values) {
+        public Criteria andStockIn(List<Long> values) {
             addCriterion("stock in", values, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockNotIn(List<Integer> values) {
+        public Criteria andStockNotIn(List<Long> values) {
             addCriterion("stock not in", values, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockBetween(Integer value1, Integer value2) {
+        public Criteria andStockBetween(Long value1, Long value2) {
             addCriterion("stock between", value1, value2, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockNotBetween(Integer value1, Integer value2) {
+        public Criteria andStockNotBetween(Long value1, Long value2) {
             addCriterion("stock not between", value1, value2, "stock");
             return (Criteria) this;
         }
@@ -577,6 +577,66 @@ public class TCouponExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreatetimeIsNull() {
+            addCriterion("createTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeIsNotNull() {
+            addCriterion("createTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeEqualTo(Date value) {
+            addCriterion("createTime =", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeNotEqualTo(Date value) {
+            addCriterion("createTime <>", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeGreaterThan(Date value) {
+            addCriterion("createTime >", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("createTime >=", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeLessThan(Date value) {
+            addCriterion("createTime <", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeLessThanOrEqualTo(Date value) {
+            addCriterion("createTime <=", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeIn(List<Date> values) {
+            addCriterion("createTime in", values, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeNotIn(List<Date> values) {
+            addCriterion("createTime not in", values, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeBetween(Date value1, Date value2) {
+            addCriterion("createTime between", value1, value2, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeNotBetween(Date value1, Date value2) {
+            addCriterion("createTime not between", value1, value2, "createtime");
+            return (Criteria) this;
+        }
+
         public Criteria andStatusIsNull() {
             addCriterion("status is null");
             return (Criteria) this;
@@ -634,186 +694,6 @@ public class TCouponExample {
 
         public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeIsNull() {
-            addCriterion("create_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeIsNotNull() {
-            addCriterion("create_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeEqualTo(Date value) {
-            addCriterion("create_time =", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeNotEqualTo(Date value) {
-            addCriterion("create_time <>", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeGreaterThan(Date value) {
-            addCriterion("create_time >", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("create_time >=", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeLessThan(Date value) {
-            addCriterion("create_time <", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("create_time <=", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeIn(List<Date> values) {
-            addCriterion("create_time in", values, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeNotIn(List<Date> values) {
-            addCriterion("create_time not in", values, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("create_time between", value1, value2, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("create_time not between", value1, value2, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeIsNull() {
-            addCriterion("start_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeIsNotNull() {
-            addCriterion("start_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeEqualTo(Date value) {
-            addCriterion("start_time =", value, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeNotEqualTo(Date value) {
-            addCriterion("start_time <>", value, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeGreaterThan(Date value) {
-            addCriterion("start_time >", value, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("start_time >=", value, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeLessThan(Date value) {
-            addCriterion("start_time <", value, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeLessThanOrEqualTo(Date value) {
-            addCriterion("start_time <=", value, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeIn(List<Date> values) {
-            addCriterion("start_time in", values, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeNotIn(List<Date> values) {
-            addCriterion("start_time not in", values, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeBetween(Date value1, Date value2) {
-            addCriterion("start_time between", value1, value2, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andStartTimeNotBetween(Date value1, Date value2) {
-            addCriterion("start_time not between", value1, value2, "startTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeIsNull() {
-            addCriterion("end_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeIsNotNull() {
-            addCriterion("end_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeEqualTo(Date value) {
-            addCriterion("end_time =", value, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeNotEqualTo(Date value) {
-            addCriterion("end_time <>", value, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeGreaterThan(Date value) {
-            addCriterion("end_time >", value, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("end_time >=", value, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeLessThan(Date value) {
-            addCriterion("end_time <", value, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeLessThanOrEqualTo(Date value) {
-            addCriterion("end_time <=", value, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeIn(List<Date> values) {
-            addCriterion("end_time in", values, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeNotIn(List<Date> values) {
-            addCriterion("end_time not in", values, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeBetween(Date value1, Date value2) {
-            addCriterion("end_time between", value1, value2, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeNotBetween(Date value1, Date value2) {
-            addCriterion("end_time not between", value1, value2, "endTime");
             return (Criteria) this;
         }
     }

@@ -1,214 +1,187 @@
 package com.xdclass.couponapp.mapper;
 
-import static org.apache.ibatis.jdbc.SqlBuilder.BEGIN;
-import static org.apache.ibatis.jdbc.SqlBuilder.DELETE_FROM;
-import static org.apache.ibatis.jdbc.SqlBuilder.FROM;
-import static org.apache.ibatis.jdbc.SqlBuilder.INSERT_INTO;
-import static org.apache.ibatis.jdbc.SqlBuilder.ORDER_BY;
-import static org.apache.ibatis.jdbc.SqlBuilder.SELECT;
-import static org.apache.ibatis.jdbc.SqlBuilder.SELECT_DISTINCT;
-import static org.apache.ibatis.jdbc.SqlBuilder.SET;
-import static org.apache.ibatis.jdbc.SqlBuilder.SQL;
-import static org.apache.ibatis.jdbc.SqlBuilder.UPDATE;
-import static org.apache.ibatis.jdbc.SqlBuilder.VALUES;
-import static org.apache.ibatis.jdbc.SqlBuilder.WHERE;
-
 import com.xdclass.couponapp.domain.TUserCoupon;
 import com.xdclass.couponapp.domain.TUserCouponExample.Criteria;
 import com.xdclass.couponapp.domain.TUserCouponExample.Criterion;
 import com.xdclass.couponapp.domain.TUserCouponExample;
 import java.util.List;
 import java.util.Map;
+import org.apache.ibatis.jdbc.SQL;
 
 public class TUserCouponSqlProvider {
 
     public String countByExample(TUserCouponExample example) {
-        BEGIN();
-        SELECT("count(*)");
-        FROM("t_user_coupon");
-        applyWhere(example, false);
-        return SQL();
+        SQL sql = new SQL();
+        sql.SELECT("count(*)").FROM("t_user_coupon");
+        applyWhere(sql, example, false);
+        return sql.toString();
     }
 
     public String deleteByExample(TUserCouponExample example) {
-        BEGIN();
-        DELETE_FROM("t_user_coupon");
-        applyWhere(example, false);
-        return SQL();
+        SQL sql = new SQL();
+        sql.DELETE_FROM("t_user_coupon");
+        applyWhere(sql, example, false);
+        return sql.toString();
     }
 
     public String insertSelective(TUserCoupon record) {
-        BEGIN();
-        INSERT_INTO("t_user_coupon");
+        SQL sql = new SQL();
+        sql.INSERT_INTO("t_user_coupon");
         
         if (record.getUserCouponCode() != null) {
-            VALUES("user_coupon_code", "#{userCouponCode,jdbcType=VARCHAR}");
+            sql.VALUES("user_coupon_code", "#{userCouponCode,jdbcType=VARCHAR}");
         }
         
         if (record.getPicUrl() != null) {
-            VALUES("pic_url", "#{picUrl,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCreatetime() != null) {
-            VALUES("createTime", "#{createtime,jdbcType=TIMESTAMP}");
+            sql.VALUES("pic_url", "#{picUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getCouponId() != null) {
-            VALUES("coupon_id", "#{couponId,jdbcType=INTEGER}");
+            sql.VALUES("coupon_id", "#{couponId,jdbcType=INTEGER}");
         }
         
         if (record.getUserId() != null) {
-            VALUES("user_id", "#{userId,jdbcType=INTEGER}");
+            sql.VALUES("user_id", "#{userId,jdbcType=INTEGER}");
         }
         
         if (record.getStatus() != null) {
-            VALUES("status", "#{status,jdbcType=INTEGER}");
+            sql.VALUES("status", "#{status,jdbcType=INTEGER}");
         }
         
         if (record.getOrderId() != null) {
-            VALUES("order_id", "#{orderId,jdbcType=INTEGER}");
+            sql.VALUES("order_id", "#{orderId,jdbcType=INTEGER}");
         }
         
         if (record.getCreateTime() != null) {
-            VALUES("create_time", "#{createTime,jdbcType=TIMESTAMP}");
+            sql.VALUES("create_time", "#{createTime,jdbcType=TIMESTAMP}");
         }
         
-        return SQL();
+        return sql.toString();
     }
 
     public String selectByExample(TUserCouponExample example) {
-        BEGIN();
+        SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("id");
         } else {
-            SELECT("id");
+            sql.SELECT("id");
         }
-        SELECT("user_coupon_code");
-        SELECT("pic_url");
-        SELECT("createTime");
-        SELECT("coupon_id");
-        SELECT("user_id");
-        SELECT("status");
-        SELECT("order_id");
-        SELECT("create_time");
-        FROM("t_user_coupon");
-        applyWhere(example, false);
+        sql.SELECT("user_coupon_code");
+        sql.SELECT("pic_url");
+        sql.SELECT("coupon_id");
+        sql.SELECT("user_id");
+        sql.SELECT("status");
+        sql.SELECT("order_id");
+        sql.SELECT("create_time");
+        sql.FROM("t_user_coupon");
+        applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
-            ORDER_BY(example.getOrderByClause());
+            sql.ORDER_BY(example.getOrderByClause());
         }
         
-        return SQL();
+        return sql.toString();
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
         TUserCoupon record = (TUserCoupon) parameter.get("record");
         TUserCouponExample example = (TUserCouponExample) parameter.get("example");
         
-        BEGIN();
-        UPDATE("t_user_coupon");
+        SQL sql = new SQL();
+        sql.UPDATE("t_user_coupon");
         
         if (record.getId() != null) {
-            SET("id = #{record.id,jdbcType=INTEGER}");
+            sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
         if (record.getUserCouponCode() != null) {
-            SET("user_coupon_code = #{record.userCouponCode,jdbcType=VARCHAR}");
+            sql.SET("user_coupon_code = #{record.userCouponCode,jdbcType=VARCHAR}");
         }
         
         if (record.getPicUrl() != null) {
-            SET("pic_url = #{record.picUrl,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCreatetime() != null) {
-            SET("createTime = #{record.createtime,jdbcType=TIMESTAMP}");
+            sql.SET("pic_url = #{record.picUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getCouponId() != null) {
-            SET("coupon_id = #{record.couponId,jdbcType=INTEGER}");
+            sql.SET("coupon_id = #{record.couponId,jdbcType=INTEGER}");
         }
         
         if (record.getUserId() != null) {
-            SET("user_id = #{record.userId,jdbcType=INTEGER}");
+            sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
         }
         
         if (record.getStatus() != null) {
-            SET("status = #{record.status,jdbcType=INTEGER}");
+            sql.SET("status = #{record.status,jdbcType=INTEGER}");
         }
         
         if (record.getOrderId() != null) {
-            SET("order_id = #{record.orderId,jdbcType=INTEGER}");
+            sql.SET("order_id = #{record.orderId,jdbcType=INTEGER}");
         }
         
         if (record.getCreateTime() != null) {
-            SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
+            sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
         }
         
-        applyWhere(example, true);
-        return SQL();
+        applyWhere(sql, example, true);
+        return sql.toString();
     }
 
     public String updateByExample(Map<String, Object> parameter) {
-        BEGIN();
-        UPDATE("t_user_coupon");
+        SQL sql = new SQL();
+        sql.UPDATE("t_user_coupon");
         
-        SET("id = #{record.id,jdbcType=INTEGER}");
-        SET("user_coupon_code = #{record.userCouponCode,jdbcType=VARCHAR}");
-        SET("pic_url = #{record.picUrl,jdbcType=VARCHAR}");
-        SET("createTime = #{record.createtime,jdbcType=TIMESTAMP}");
-        SET("coupon_id = #{record.couponId,jdbcType=INTEGER}");
-        SET("user_id = #{record.userId,jdbcType=INTEGER}");
-        SET("status = #{record.status,jdbcType=INTEGER}");
-        SET("order_id = #{record.orderId,jdbcType=INTEGER}");
-        SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
+        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("user_coupon_code = #{record.userCouponCode,jdbcType=VARCHAR}");
+        sql.SET("pic_url = #{record.picUrl,jdbcType=VARCHAR}");
+        sql.SET("coupon_id = #{record.couponId,jdbcType=INTEGER}");
+        sql.SET("user_id = #{record.userId,jdbcType=INTEGER}");
+        sql.SET("status = #{record.status,jdbcType=INTEGER}");
+        sql.SET("order_id = #{record.orderId,jdbcType=INTEGER}");
+        sql.SET("create_time = #{record.createTime,jdbcType=TIMESTAMP}");
         
         TUserCouponExample example = (TUserCouponExample) parameter.get("example");
-        applyWhere(example, true);
-        return SQL();
+        applyWhere(sql, example, true);
+        return sql.toString();
     }
 
     public String updateByPrimaryKeySelective(TUserCoupon record) {
-        BEGIN();
-        UPDATE("t_user_coupon");
+        SQL sql = new SQL();
+        sql.UPDATE("t_user_coupon");
         
         if (record.getUserCouponCode() != null) {
-            SET("user_coupon_code = #{userCouponCode,jdbcType=VARCHAR}");
+            sql.SET("user_coupon_code = #{userCouponCode,jdbcType=VARCHAR}");
         }
         
         if (record.getPicUrl() != null) {
-            SET("pic_url = #{picUrl,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCreatetime() != null) {
-            SET("createTime = #{createtime,jdbcType=TIMESTAMP}");
+            sql.SET("pic_url = #{picUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getCouponId() != null) {
-            SET("coupon_id = #{couponId,jdbcType=INTEGER}");
+            sql.SET("coupon_id = #{couponId,jdbcType=INTEGER}");
         }
         
         if (record.getUserId() != null) {
-            SET("user_id = #{userId,jdbcType=INTEGER}");
+            sql.SET("user_id = #{userId,jdbcType=INTEGER}");
         }
         
         if (record.getStatus() != null) {
-            SET("status = #{status,jdbcType=INTEGER}");
+            sql.SET("status = #{status,jdbcType=INTEGER}");
         }
         
         if (record.getOrderId() != null) {
-            SET("order_id = #{orderId,jdbcType=INTEGER}");
+            sql.SET("order_id = #{orderId,jdbcType=INTEGER}");
         }
         
         if (record.getCreateTime() != null) {
-            SET("create_time = #{createTime,jdbcType=TIMESTAMP}");
+            sql.SET("create_time = #{createTime,jdbcType=TIMESTAMP}");
         }
         
-        WHERE("id = #{id,jdbcType=INTEGER}");
+        sql.WHERE("id = #{id,jdbcType=INTEGER}");
         
-        return SQL();
+        return sql.toString();
     }
 
-    protected void applyWhere(TUserCouponExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, TUserCouponExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }
@@ -297,7 +270,7 @@ public class TUserCouponSqlProvider {
         }
         
         if (sb.length() > 0) {
-            WHERE(sb.toString());
+            sql.WHERE(sb.toString());
         }
     }
 }

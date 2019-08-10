@@ -1,29 +1,31 @@
 server:
-  port: 8091
+   port: 8091
 druid:
   allow:
-    ip: 127.0.0.1
+     ip: 127.0.0.1
   login:
-    user_name: root
-    password: root
-  spring:
-    datasource:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url:jdbc: mysql://120.78.185.109:3306/xdclass_coupon?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
-      username: root
-      type: com.alibaba.druid.pool.DruidDataSource
-      initialSize: 5
-      minIdle: 5
-      maxActive: 20
-      maxWait: 60000
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictableIdleTimeMillis: 300000
-      validationQuery: SELECT 1 FROM DUAL
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      poolPreparedStatements: true
-      #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-      maxPoolPreparedStatementPerConnectionSize: 20
-      useGlobalDataSourceStat: true
-      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+     user_name: root
+     password: root
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.78.185.109/xdclass_coupon?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 09251008@jx
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 1
+    min-idle: 1
+    max-idle: 5
+    max-wait-millis: 60000
+    timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    maxPoolPreparedStatementPerConnectionSize: 20
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000

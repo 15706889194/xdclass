@@ -4,7 +4,7 @@
 
 	<context id="entmobile" targetRuntime="MyBatis3">
 
-		<plugin type="org.mybatis.generator.plugins.plugins.AddLimitOffsetPlugin" />
+		<plugin type="org.mybatis.generator.plugins.AddLimitOffsetPlugin" />
 		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
 
 		<commentGenerator>
@@ -14,8 +14,8 @@
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-						connectionURL="jdbc:mysql://120.78.185.109:3306/xdclass_coupon?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false"
-						userId="root" password="09251008@jx" />
+						connectionURL="jdbc:mysql://localhost:3306/shop?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false"
+						userId="root" password="daniel" />
 
 		<!-- java type resolver -->
 		<javaTypeResolver>
@@ -24,7 +24,7 @@
 
 		<!-- gem entity -->
 		<!-- data -->
-		<javaModelGenerator targetPackage="com.xdclass.couponapp.domain"
+		<javaModelGenerator targetPackage="com.xdclass.mobile.xdclassmobileredis.domain"
 							targetProject="./src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="false" />
@@ -34,18 +34,13 @@
 		<!-- gem annotated mapper -->
 		<!-- data -->
 		<javaClientGenerator type="ANNOTATEDMAPPER"
-							 targetPackage="com.xdclass.couponapp.mapper"
+							 targetPackage="com.xdclass.mobile.xdclassmobileredis.mapper"
 							 targetProject="./src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
 
 
-
-
-		<table tableName="t_user_coupon">
-			<generatedKey column="id" sqlStatement="JDBC"/>
-		</table>
 
 
 		<table tableName="t_coupon">
