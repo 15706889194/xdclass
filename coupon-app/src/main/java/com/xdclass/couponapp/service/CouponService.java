@@ -3,8 +3,9 @@ package com.xdclass.couponapp.service;
 import com.xdclass.couponapp.domain.TCoupon;
 import com.xdclass.couponapp.domain.TCouponExample;
 import com.xdclass.couponapp.mapper.TCouponMapper;
-import org.springframework.stereotype.Service;
 
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class CouponService {
 
     @Resource
     private TCouponMapper tCouponMapper;
+    @Reference
+    private IuserService  IUserService;
 
     public void print(){
         System.err.println("enter coupon service");

@@ -68,8 +68,9 @@ public class CouponAppApplicationTests {
     public void select(){
         // select * from t_coupon where code = "00415d96-49bd-4cce-83e3-08302b9aa084" and status=0 and achieve_amount between (100,1000) and title not like '%111%';
         TCouponExample example = new TCouponExample();
-        example.createCriteria().andCodeEqualTo("00415d96-49bd-4cce-83e3-08302b9aa084").andStatusEqualTo(0)
-                .andAchieveAmountBetween(100,1000).andTitleNotLike("111");
+        example.createCriteria().andCodeEqualTo("704547df-4ed5-4278-a092-1b04b4305b41");
+//                .andStatusEqualTo(0)
+//                .andAchieveAmountBetween(100,1000).andTitleNotLike("111");
         List<TCoupon> tCoupon =  tCouponMapper.selectByExample(example);
         System.err.println(tCoupon);
     }
