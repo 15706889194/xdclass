@@ -1,11 +1,11 @@
 server:
-   port: 8091
+  port: 8091
 druid:
   allow:
-     ip: 127.0.0.1
+    ip: 127.0.0.1
   login:
-     user_name: root
-     password: root
+    user_name: root
+    password: root
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -18,21 +18,22 @@ spring:
     max-idle: 5
     max-wait-millis: 60000
     timeBetweenEvictionRunsMillis: 60000
-      # 配置一个连接在池中最小生存的时间，单位是毫秒
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
     minEvictableIdleTimeMillis: 300000
     validationQuery: SELECT 1 FROM DUAL
     testWhileIdle: true
     testOnBorrow: true
     testOnReturn: false
     maxPoolPreparedStatementPerConnectionSize: 20
-      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
     filters: stat,wall
-      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
     dubbo:
       application:
         name: user-coupon
-        qosPort: 22221
+#        qosPort: 22222
       # 使用 zookeeper 注册中心暴露服务，注意要先开启 zookeeper
       # 注册中心id
       registry:
@@ -40,14 +41,14 @@ spring:
         # 注册中心协议
         protocol: zookeeper
         # 注册中心地址
-        address: 120.78.185.109:2181
+        address: 120.78.185.109:2182
 
       # dubbo协议在20880端口暴露服务
       # 协议名称
       protocol:
         name: dubbo
         # 协议端口
-        port: 20881
+        port: 20882
         # 协议访问log
         accesslog: dubbo-access.log
       # 重试次数

@@ -3,9 +3,11 @@ package com.xdclass.couponapp.service;
 import com.xdclass.couponapp.domain.TCoupon;
 import com.xdclass.couponapp.domain.TCouponExample;
 import com.xdclass.couponapp.mapper.TCouponMapper;
-
+import com.xdclass.userapi.service.IUserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Service;
+
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -14,8 +16,10 @@ public class CouponService {
 
     @Resource
     private TCouponMapper tCouponMapper;
+
+
     @Reference
-    private IuserService  IUserService;
+    private IUserService iUserService;
 
     public void print(){
         System.err.println("enter coupon service");
@@ -27,6 +31,12 @@ public class CouponService {
         example.createCriteria().andCodeEqualTo("0057da3c-f2ad-42bd-b6d2-8bb58b6dbc90");
         List<TCoupon> tCoupon =  tCouponMapper.selectByExample(example);
         return tCoupon.get(0).toString();
+    }
+
+
+    public String getUserById(int id){
+
+        return iUserService.getUserById(id).toString();
     }
 
 
