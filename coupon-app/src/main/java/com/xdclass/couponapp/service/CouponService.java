@@ -35,7 +35,7 @@ public class CouponService {
 
 
     public String getUserById(int id){
-
+        System.err.print(iUserService.getUserById(id));
         return iUserService.getUserById(id).toString();
     }
 
