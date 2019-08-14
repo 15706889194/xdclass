@@ -14,6 +14,12 @@ public class CouponAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CouponAppApplication.class, args);
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("执行JVM shuodownHOOK");
+            }
+        }));
     }
 
 }
