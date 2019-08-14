@@ -2,13 +2,13 @@ package com.xdclass.couponapp.service;
 
 import com.xdclass.couponapp.domain.TCoupon;
 import com.xdclass.couponapp.domain.TCouponExample;
+import com.xdclass.couponapp.extances.Extances;
 import com.xdclass.couponapp.mapper.TCouponMapper;
 import com.xdclass.userapi.service.IUserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Service;
-
-
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,6 +38,14 @@ public class CouponService {
         System.err.print(iUserService.getUserById(id));
         return iUserService.getUserById(id).toString();
     }
+
+    public List<TCoupon> querrCoupon(){
+        TCouponExample tCouponExample = new TCouponExample();
+        TCouponExample.Criteria criteria = tCouponExample.createCriteria();
+        criteria.andStatusEqualTo(Extances.USEFULL).andEndTimeGreaterThan(new Date()).andStartTimeLessThan(new Date());
+        return tCouponMapper.selectByExample(tCouponExample);
+    }
+
 
 
 }

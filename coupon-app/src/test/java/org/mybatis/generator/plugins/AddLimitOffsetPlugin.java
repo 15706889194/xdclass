@@ -16,7 +16,7 @@ public class AddLimitOffsetPlugin extends PluginAdapter {
 	}
 
 	public boolean modelExampleClassGenerated(TopLevelClass topLevelClass,
-			IntrospectedTable introspectedTable) {
+                                              IntrospectedTable introspectedTable) {
 		FullyQualifiedJavaType offsetType = new FullyQualifiedJavaType(
 				"javax.annotation.Generated");
 		topLevelClass.addImportedType(offsetType);
@@ -67,7 +67,7 @@ public class AddLimitOffsetPlugin extends PluginAdapter {
 	}
 
 	public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(
-			XmlElement element, IntrospectedTable introspectedTable) {
+            XmlElement element, IntrospectedTable introspectedTable) {
 		XmlElement isNotNullElement = new XmlElement("if");
 		isNotNullElement.addAttribute(new Attribute("test", "limit > 0"));
 		isNotNullElement.addElement(new TextElement("limit ${limit}"));

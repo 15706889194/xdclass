@@ -1,213 +1,229 @@
 package com.xdclass.couponapp.mapper;
 
-import static org.apache.ibatis.jdbc.SqlBuilder.BEGIN;
-import static org.apache.ibatis.jdbc.SqlBuilder.DELETE_FROM;
-import static org.apache.ibatis.jdbc.SqlBuilder.FROM;
-import static org.apache.ibatis.jdbc.SqlBuilder.INSERT_INTO;
-import static org.apache.ibatis.jdbc.SqlBuilder.ORDER_BY;
-import static org.apache.ibatis.jdbc.SqlBuilder.SELECT;
-import static org.apache.ibatis.jdbc.SqlBuilder.SELECT_DISTINCT;
-import static org.apache.ibatis.jdbc.SqlBuilder.SET;
-import static org.apache.ibatis.jdbc.SqlBuilder.SQL;
-import static org.apache.ibatis.jdbc.SqlBuilder.UPDATE;
-import static org.apache.ibatis.jdbc.SqlBuilder.VALUES;
-import static org.apache.ibatis.jdbc.SqlBuilder.WHERE;
-
 import com.xdclass.couponapp.domain.TCoupon;
+import com.xdclass.couponapp.domain.TCouponExample.Criteria;
+import com.xdclass.couponapp.domain.TCouponExample.Criterion;
 import com.xdclass.couponapp.domain.TCouponExample;
-
 import java.util.List;
 import java.util.Map;
+import org.apache.ibatis.jdbc.SQL;
 
 public class TCouponSqlProvider {
 
     public String countByExample(TCouponExample example) {
-        BEGIN();
-        SELECT("count(*)");
-        FROM("t_coupon");
-        applyWhere(example, false);
-        return SQL();
+        SQL sql = new SQL();
+        sql.SELECT("count(*)").FROM("t_coupon");
+        applyWhere(sql, example, false);
+        return sql.toString();
     }
 
     public String deleteByExample(TCouponExample example) {
-        BEGIN();
-        DELETE_FROM("t_coupon");
-        applyWhere(example, false);
-        return SQL();
+        SQL sql = new SQL();
+        sql.DELETE_FROM("t_coupon");
+        applyWhere(sql, example, false);
+        return sql.toString();
     }
 
     public String insertSelective(TCoupon record) {
-        BEGIN();
-        INSERT_INTO("t_coupon");
+        SQL sql = new SQL();
+        sql.INSERT_INTO("t_coupon");
         
         if (record.getCode() != null) {
-            VALUES("code", "#{code,jdbcType=VARCHAR}");
+            sql.VALUES("code", "#{code,jdbcType=VARCHAR}");
         }
         
         if (record.getPicUrl() != null) {
-            VALUES("pic_url", "#{picUrl,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getReduceAmount() != null) {
-            VALUES("reduce_amount", "#{reduceAmount,jdbcType=INTEGER}");
+            sql.VALUES("pic_url", "#{picUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getAchieveAmount() != null) {
-            VALUES("achieve_amount", "#{achieveAmount,jdbcType=INTEGER}");
+            sql.VALUES("achieve_amount", "#{achieveAmount,jdbcType=INTEGER}");
+        }
+        
+        if (record.getReduceAmount() != null) {
+            sql.VALUES("reduce_amount", "#{reduceAmount,jdbcType=INTEGER}");
         }
         
         if (record.getStock() != null) {
-            VALUES("stock", "#{stock,jdbcType=BIGINT}");
+            sql.VALUES("stock", "#{stock,jdbcType=INTEGER}");
         }
         
         if (record.getTitle() != null) {
-            VALUES("title", "#{title,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCreatetime() != null) {
-            VALUES("createTime", "#{createtime,jdbcType=TIMESTAMP}");
+            sql.VALUES("title", "#{title,jdbcType=VARCHAR}");
         }
         
         if (record.getStatus() != null) {
-            VALUES("status", "#{status,jdbcType=INTEGER}");
+            sql.VALUES("status", "#{status,jdbcType=INTEGER}");
         }
         
-        return SQL();
+        if (record.getCreatetime() != null) {
+            sql.VALUES("createTime", "#{createtime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getStartTime() != null) {
+            sql.VALUES("start_Time", "#{startTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getEndTime() != null) {
+            sql.VALUES("end_Time", "#{endTime,jdbcType=TIMESTAMP}");
+        }
+        
+        return sql.toString();
     }
 
     public String selectByExample(TCouponExample example) {
-        BEGIN();
+        SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            SELECT_DISTINCT("id");
+            sql.SELECT_DISTINCT("id");
         } else {
-            SELECT("id");
+            sql.SELECT("id");
         }
-        SELECT("code");
-        SELECT("pic_url");
-        SELECT("reduce_amount");
-        SELECT("achieve_amount");
-        SELECT("stock");
-        SELECT("title");
-        SELECT("createTime");
-        SELECT("status");
-        FROM("t_coupon");
-        applyWhere(example, false);
+        sql.SELECT("code");
+        sql.SELECT("pic_url");
+        sql.SELECT("achieve_amount");
+        sql.SELECT("reduce_amount");
+        sql.SELECT("stock");
+        sql.SELECT("title");
+        sql.SELECT("status");
+        sql.SELECT("createTime");
+        sql.SELECT("start_Time");
+        sql.SELECT("end_Time");
+        sql.FROM("t_coupon");
+        applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
-            ORDER_BY(example.getOrderByClause());
+            sql.ORDER_BY(example.getOrderByClause());
         }
         
-        return SQL();
+        return sql.toString();
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
         TCoupon record = (TCoupon) parameter.get("record");
         TCouponExample example = (TCouponExample) parameter.get("example");
         
-        BEGIN();
-        UPDATE("t_coupon");
+        SQL sql = new SQL();
+        sql.UPDATE("t_coupon");
         
         if (record.getId() != null) {
-            SET("id = #{record.id,jdbcType=INTEGER}");
+            sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
         if (record.getCode() != null) {
-            SET("code = #{record.code,jdbcType=VARCHAR}");
+            sql.SET("code = #{record.code,jdbcType=VARCHAR}");
         }
         
         if (record.getPicUrl() != null) {
-            SET("pic_url = #{record.picUrl,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getReduceAmount() != null) {
-            SET("reduce_amount = #{record.reduceAmount,jdbcType=INTEGER}");
+            sql.SET("pic_url = #{record.picUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getAchieveAmount() != null) {
-            SET("achieve_amount = #{record.achieveAmount,jdbcType=INTEGER}");
+            sql.SET("achieve_amount = #{record.achieveAmount,jdbcType=INTEGER}");
+        }
+        
+        if (record.getReduceAmount() != null) {
+            sql.SET("reduce_amount = #{record.reduceAmount,jdbcType=INTEGER}");
         }
         
         if (record.getStock() != null) {
-            SET("stock = #{record.stock,jdbcType=BIGINT}");
+            sql.SET("stock = #{record.stock,jdbcType=INTEGER}");
         }
         
         if (record.getTitle() != null) {
-            SET("title = #{record.title,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCreatetime() != null) {
-            SET("createTime = #{record.createtime,jdbcType=TIMESTAMP}");
+            sql.SET("title = #{record.title,jdbcType=VARCHAR}");
         }
         
         if (record.getStatus() != null) {
-            SET("status = #{record.status,jdbcType=INTEGER}");
+            sql.SET("status = #{record.status,jdbcType=INTEGER}");
         }
         
-        applyWhere(example, true);
-        return SQL();
+        if (record.getCreatetime() != null) {
+            sql.SET("createTime = #{record.createtime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getStartTime() != null) {
+            sql.SET("start_Time = #{record.startTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getEndTime() != null) {
+            sql.SET("end_Time = #{record.endTime,jdbcType=TIMESTAMP}");
+        }
+        
+        applyWhere(sql, example, true);
+        return sql.toString();
     }
 
     public String updateByExample(Map<String, Object> parameter) {
-        BEGIN();
-        UPDATE("t_coupon");
+        SQL sql = new SQL();
+        sql.UPDATE("t_coupon");
         
-        SET("id = #{record.id,jdbcType=INTEGER}");
-        SET("code = #{record.code,jdbcType=VARCHAR}");
-        SET("pic_url = #{record.picUrl,jdbcType=VARCHAR}");
-        SET("reduce_amount = #{record.reduceAmount,jdbcType=INTEGER}");
-        SET("achieve_amount = #{record.achieveAmount,jdbcType=INTEGER}");
-        SET("stock = #{record.stock,jdbcType=BIGINT}");
-        SET("title = #{record.title,jdbcType=VARCHAR}");
-        SET("createTime = #{record.createtime,jdbcType=TIMESTAMP}");
-        SET("status = #{record.status,jdbcType=INTEGER}");
+        sql.SET("id = #{record.id,jdbcType=INTEGER}");
+        sql.SET("code = #{record.code,jdbcType=VARCHAR}");
+        sql.SET("pic_url = #{record.picUrl,jdbcType=VARCHAR}");
+        sql.SET("achieve_amount = #{record.achieveAmount,jdbcType=INTEGER}");
+        sql.SET("reduce_amount = #{record.reduceAmount,jdbcType=INTEGER}");
+        sql.SET("stock = #{record.stock,jdbcType=INTEGER}");
+        sql.SET("title = #{record.title,jdbcType=VARCHAR}");
+        sql.SET("status = #{record.status,jdbcType=INTEGER}");
+        sql.SET("createTime = #{record.createtime,jdbcType=TIMESTAMP}");
+        sql.SET("start_Time = #{record.startTime,jdbcType=TIMESTAMP}");
+        sql.SET("end_Time = #{record.endTime,jdbcType=TIMESTAMP}");
         
         TCouponExample example = (TCouponExample) parameter.get("example");
-        applyWhere(example, true);
-        return SQL();
+        applyWhere(sql, example, true);
+        return sql.toString();
     }
 
     public String updateByPrimaryKeySelective(TCoupon record) {
-        BEGIN();
-        UPDATE("t_coupon");
+        SQL sql = new SQL();
+        sql.UPDATE("t_coupon");
         
         if (record.getCode() != null) {
-            SET("code = #{code,jdbcType=VARCHAR}");
+            sql.SET("code = #{code,jdbcType=VARCHAR}");
         }
         
         if (record.getPicUrl() != null) {
-            SET("pic_url = #{picUrl,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getReduceAmount() != null) {
-            SET("reduce_amount = #{reduceAmount,jdbcType=INTEGER}");
+            sql.SET("pic_url = #{picUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getAchieveAmount() != null) {
-            SET("achieve_amount = #{achieveAmount,jdbcType=INTEGER}");
+            sql.SET("achieve_amount = #{achieveAmount,jdbcType=INTEGER}");
+        }
+        
+        if (record.getReduceAmount() != null) {
+            sql.SET("reduce_amount = #{reduceAmount,jdbcType=INTEGER}");
         }
         
         if (record.getStock() != null) {
-            SET("stock = #{stock,jdbcType=BIGINT}");
+            sql.SET("stock = #{stock,jdbcType=INTEGER}");
         }
         
         if (record.getTitle() != null) {
-            SET("title = #{title,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getCreatetime() != null) {
-            SET("createTime = #{createtime,jdbcType=TIMESTAMP}");
+            sql.SET("title = #{title,jdbcType=VARCHAR}");
         }
         
         if (record.getStatus() != null) {
-            SET("status = #{status,jdbcType=INTEGER}");
+            sql.SET("status = #{status,jdbcType=INTEGER}");
         }
         
-        WHERE("id = #{id,jdbcType=INTEGER}");
+        if (record.getCreatetime() != null) {
+            sql.SET("createTime = #{createtime,jdbcType=TIMESTAMP}");
+        }
         
-        return SQL();
+        if (record.getStartTime() != null) {
+            sql.SET("start_Time = #{startTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getEndTime() != null) {
+            sql.SET("end_Time = #{endTime,jdbcType=TIMESTAMP}");
+        }
+        
+        sql.WHERE("id = #{id,jdbcType=INTEGER}");
+        
+        return sql.toString();
     }
 
-    protected void applyWhere(TCouponExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, TCouponExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }
@@ -235,10 +251,10 @@ public class TCouponSqlProvider {
         }
         
         StringBuilder sb = new StringBuilder();
-        List<TCouponExample.Criteria> oredCriteria = example.getOredCriteria();
+        List<Criteria> oredCriteria = example.getOredCriteria();
         boolean firstCriteria = true;
         for (int i = 0; i < oredCriteria.size(); i++) {
-            TCouponExample.Criteria criteria = oredCriteria.get(i);
+            Criteria criteria = oredCriteria.get(i);
             if (criteria.isValid()) {
                 if (firstCriteria) {
                     firstCriteria = false;
@@ -247,10 +263,10 @@ public class TCouponSqlProvider {
                 }
                 
                 sb.append('(');
-                List<TCouponExample.Criterion> criterions = criteria.getAllCriteria();
+                List<Criterion> criterions = criteria.getAllCriteria();
                 boolean firstCriterion = true;
                 for (int j = 0; j < criterions.size(); j++) {
-                    TCouponExample.Criterion criterion = criterions.get(j);
+                    Criterion criterion = criterions.get(j);
                     if (firstCriterion) {
                         firstCriterion = false;
                     } else {
@@ -296,7 +312,7 @@ public class TCouponSqlProvider {
         }
         
         if (sb.length() > 0) {
-            WHERE(sb.toString());
+            sql.WHERE(sb.toString());
         }
     }
 }

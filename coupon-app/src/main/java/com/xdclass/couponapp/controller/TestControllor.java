@@ -1,5 +1,6 @@
 package com.xdclass.couponapp.controller;
 
+import com.xdclass.couponapp.domain.TCoupon;
 import com.xdclass.couponapp.service.CouponService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,4 @@ public class TestControllor {
 
         return couponService.getUserById(id);
     }
-
-
-
 }
