@@ -7,7 +7,9 @@ import com.xdclass.couponapp.domain.TCoupon;
 import com.xdclass.couponapp.mapper.TCouponMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openjdk.jmh.annotations.Benchmark;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBeans;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -84,5 +86,8 @@ public class CouponAppApplicationTests {
         List<TCoupon> tCoupons = couponService.querrCoupon();
         System.out.println(tCoupons.toString());
     }
+
+
+
 
 }
