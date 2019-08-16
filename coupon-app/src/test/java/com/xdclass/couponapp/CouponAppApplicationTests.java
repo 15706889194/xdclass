@@ -35,22 +35,22 @@ public class CouponAppApplicationTests {
         System.err.println("hello world");
     }
 
-    @Test
-    public void insert(){
-        for(int i=0;i<100000;i++){
-            TCoupon tCoupon = new TCoupon();
-            tCoupon.setAchieveAmount(500);
-            tCoupon.setReduceAmount(20);
-            tCoupon.setCreatetime(new Date());
-            tCoupon.setCode(UUID.randomUUID().toString());
-            tCoupon.setPicUrl("1.jpg");
-            tCoupon.setStatus(0);
-            //tCoupon.setStock(100L);
-            tCoupon.setTitle("测试coupon");
-            tCouponMapper.insert(tCoupon);
-        }
-
-    }
+//    @Test
+//    public void insert(){
+//        for(int i=0;i<100000;i++){
+//            TCoupon tCoupon = new TCoupon();
+//            tCoupon.setAchieveAmount(500);
+//            tCoupon.setReduceAmount(20);
+//            tCoupon.setCreatetime(new Date());
+//            tCoupon.setCode(UUID.randomUUID().toString());
+//            tCoupon.setPicUrl("1.jpg");
+//            tCoupon.setStatus(0);
+//            //tCoupon.setStock(100L);
+//            tCoupon.setTitle("测试coupon");
+//            tCouponMapper.insert(tCoupon);
+//        }
+//
+//    }
 
     @Test
     public void delete(){
