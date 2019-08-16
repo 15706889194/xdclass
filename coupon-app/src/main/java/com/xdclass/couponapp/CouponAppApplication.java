@@ -5,11 +5,13 @@ import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfig;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @DubboComponentScan("com.xdclass.userapp.service.dubbo")
 @EnableDubboConfig
 @MapperScan("com.xdclass.couponapp.mapper")
+@EnableScheduling
 public class CouponAppApplication {
 
     public static void main(String[] args) {

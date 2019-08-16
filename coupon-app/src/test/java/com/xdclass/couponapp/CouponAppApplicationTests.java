@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -35,22 +36,25 @@ public class CouponAppApplicationTests {
         System.err.println("hello world");
     }
 
-//    @Test
-//    public void insert(){
-//        for(int i=0;i<100000;i++){
-//            TCoupon tCoupon = new TCoupon();
-//            tCoupon.setAchieveAmount(500);
-//            tCoupon.setReduceAmount(20);
-//            tCoupon.setCreatetime(new Date());
-//            tCoupon.setCode(UUID.randomUUID().toString());
-//            tCoupon.setPicUrl("1.jpg");
-//            tCoupon.setStatus(0);
-//            //tCoupon.setStock(100L);
-//            tCoupon.setTitle("测试coupon");
-//            tCouponMapper.insert(tCoupon);
-//        }
-//
-//    }
+    @Test
+    public void insert(){
+        for(int i=0;i<100000;i++){
+            TCoupon tCoupon = new TCoupon();
+            tCoupon.setAchieveAmount(500);
+            tCoupon.setReduceAmount(20);
+            tCoupon.setCreatetime(new Date());
+            tCoupon.setCode(UUID.randomUUID().toString());
+            tCoupon.setPicUrl("1.jpg");
+            tCoupon.setStatus(0);
+            tCoupon.setStartTime(new Date());
+            tCoupon.setEndTime(new Date());
+            //tCoupon.setStock(100L);
+            tCoupon.setTitle("测试coupon");
+            tCouponMapper.insert(tCoupon);
+
+        }
+
+    }
 
     @Test
     public void delete(){
