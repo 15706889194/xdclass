@@ -55,3 +55,8 @@ dubbo:
   # 注册监控中心
   monitor:
     protocol: registry
+logging:
+  name: xdclss-coupon
+  config: classpath:logback-spring.xml
+  level:
+    root: info

@@ -1,4 +1,5 @@
 package com.xdclass.couponapp.service;
+import com.alibaba.druid.support.json.JSONUtils;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
@@ -8,8 +9,11 @@ import com.xdclass.couponapp.domain.TCoupon;
 import com.xdclass.couponapp.domain.TCouponExample;
 import com.xdclass.couponapp.extances.Extances;
 import com.xdclass.couponapp.mapper.TCouponMapper;
+import com.xdclass.couponapp.service.schedule.UpdateCoupon;
 import com.xdclass.userapi.service.IUserService;
 import org.apache.dubbo.config.annotation.Reference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.*;
@@ -20,7 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class CouponService {
-
+    private static final Logger logger= LoggerFactory.getLogger(CouponService.class);
     @Resource
     private TCouponMapper tCouponMapper;
 
@@ -50,7 +54,14 @@ public class CouponService {
         Map couponMap = new ConcurrentHashMap<>();
         List<TCoupon> tCoupons = this.loadCoupon(1);
         couponMap.put(1,tCoupons);
+        logger.info("11111111");
+        logger.info("更新数据后可用优惠券信息"+ map.toString());
         map=couponMap;
+    }
+
+    public List<TCoupon> getTcouponList() throws ExecutionException {
+        List<TCoupon> tCoupons = couponCach.get(1);
+        return  tCoupons;
     }
 
 
